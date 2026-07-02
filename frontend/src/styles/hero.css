@@ -1,0 +1,351 @@
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.hero{
+
+    width:min(1280px,92%);
+    margin:0 auto;
+
+    min-height:90vh;
+
+    padding:70px 0;
+
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:70px;
+
+    align-items:center;
+
+}
+
+/* ==========================================
+   LEFT
+========================================== */
+
+.hero-left{
+
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+
+}
+
+.hero-badge{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 20px;
+
+    border-radius:999px;
+
+    background:rgba(245,158,11,.12);
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    margin-bottom:28px;
+
+}
+
+.hero-left h1{
+
+    max-width:700px;
+
+    font-size:clamp(2.8rem,4vw,4.2rem);
+
+    line-height:1.08;
+
+    font-weight:800;
+
+    letter-spacing:-2px;
+
+    color:var(--text);
+
+    margin-bottom:24px;
+
+}
+
+.hero-left h1 span{
+
+    color:var(--primary);
+
+}
+
+.hero-left p{
+
+    max-width:580px;
+
+    font-size:1.08rem;
+
+    line-height:1.75;
+
+    color:var(--text-secondary);
+
+    margin-bottom:34px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:16px;
+
+    margin-bottom:28px;
+
+}
+
+.hero-rating{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:var(--text-secondary);
+
+    font-size:.95rem;
+
+}
+
+/* ==========================================
+   RIGHT
+========================================== */
+
+.hero-right{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+/* ==========================================
+   LEADERBOARD
+========================================== */
+
+.leaderboard-card{
+
+    width:100%;
+
+    max-width:470px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:34px;
+
+    box-shadow:var(--shadow-md);
+
+}
+
+.leaderboard-card h3{
+
+    font-size:1.8rem;
+
+    margin-bottom:22px;
+
+}
+
+.lb-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.lb-row:last-child{
+
+    border-bottom:none;
+
+}
+
+.lb-score{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    font-size:1.2rem;
+
+}
+
+.lb-footer{
+
+    margin-top:22px;
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media (max-width:992px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+
+        text-align:center;
+
+        min-height:auto;
+
+        padding:60px 0;
+
+    }
+
+    .hero-left{
+
+        align-items:center;
+
+    }
+
+    .hero-left p{
+
+        max-width:700px;
+
+    }
+
+    .hero-buttons{
+
+        justify-content:center;
+
+        flex-wrap:wrap;
+
+    }
+
+    .hero-rating{
+
+        justify-content:center;
+
+    }
+
+    .leaderboard-card{
+
+        max-width:650px;
+
+    }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+    .hero{
+
+        gap:38px;
+
+        padding:40px 0;
+
+    }
+
+    .hero-left h1{
+
+        font-size:2.45rem;
+
+    }
+
+    .hero-left p{
+
+        font-size:1rem;
+
+    }
+
+    .hero-buttons{
+
+        width:100%;
+
+        flex-direction:column;
+
+    }
+
+    .hero-buttons .btn,
+    .hero-buttons .btn-secondary{
+
+        width:100%;
+
+    }
+
+    .leaderboard-card{
+
+        padding:26px;
+
+    }
+
+    .leaderboard-card h3{
+
+        font-size:1.6rem;
+
+    }
+
+    .lb-row{
+
+        font-size:.95rem;
+
+        padding:15px 0;
+
+    }
+
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width:480px){
+
+    .hero{
+
+        width:94%;
+
+    }
+
+    .hero-left h1{
+
+        font-size:2rem;
+
+    }
+
+    .hero-badge{
+
+        font-size:.82rem;
+
+    }
+
+    .hero-left p{
+
+        font-size:.95rem;
+
+    }
+
+    .leaderboard-card{
+
+        padding:22px;
+
+    }
+
+}

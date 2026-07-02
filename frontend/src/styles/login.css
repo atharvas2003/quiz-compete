@@ -1,0 +1,50 @@
+.login-card{
+
+    max-width:450px;
+
+    margin:80px auto;
+
+    padding:40px;
+
+}
+
+.login-subtitle{
+
+    color:var(--text-secondary);
+
+    margin-bottom:24px;
+
+}
+
+.login-btn{
+
+    width:100%;
+
+    margin-top:12px;
+
+}
+
+.register-btn{
+
+    width:100%;
+
+    margin-top:16px;
+
+}
+.login-message{
+
+    background:#1f2937;
+
+    border:1px solid #3b82f6;
+
+    color:#93c5fd;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    margin-bottom:24px;
+
+    font-size:15px;
+
+}

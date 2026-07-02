@@ -1,0 +1,77 @@
+/* AUTH PAGE */
+
+.auth-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px 18px;
+}
+
+/* CARD */
+
+.auth-card{
+    width:100%;
+    max-width:430px;
+
+    padding:32px;
+
+    border-radius:22px;
+}
+
+/* TITLE */
+
+.auth-card h1{
+    font-size:2.4rem;
+    margin-bottom:8px;
+}
+
+.auth-card p{
+    margin-bottom:24px;
+    color:var(--text-secondary);
+}
+
+/* INPUTS */
+
+.auth-card .input{
+    margin-bottom:16px;
+}
+
+.auth-card .input:last-of-type{
+    margin-bottom:22px;
+}
+
+/* BUTTONS */
+
+.auth-card .btn{
+    width:100%;
+}
+
+.auth-card .btn + .btn,
+.auth-card .btn + .btn-secondary,
+.auth-card .btn-secondary{
+    width:100%;
+    margin-top:12px;
+}
+
+/* MOBILE */
+
+@media (max-width:600px){
+
+    .auth-page{
+        padding:20px 16px;
+        align-items:center;
+    }
+
+    .auth-card{
+
+        padding:24px;
+
+        border-radius:18px;
+    }
+
+    .auth-card h1{
+        font-size:2rem;
+    }
+
+}

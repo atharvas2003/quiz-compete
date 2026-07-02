@@ -1,0 +1,148 @@
+/* ==========================================
+   RESULT PAGE
+========================================== */
+
+.result-card {
+
+    max-width: 620px;
+
+    margin: 60px auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 24px;
+
+    text-align: center;
+}
+
+/* Badge */
+
+.result-badge {
+
+    align-self: center;
+
+    background: rgba(255,161,22,.12);
+
+    color: var(--primary);
+
+    padding: 10px 20px;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+}
+
+/* Score */
+
+.score-box {
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    padding: 30px;
+}
+
+.score-box p {
+
+    color: var(--text-secondary);
+
+    margin-bottom: 12px;
+
+    font-size: .95rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.score-box h2 {
+
+    font-size: 4rem;
+
+    color: var(--primary);
+
+    margin: 0;
+}
+
+/* Stats */
+
+.result-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 16px;
+}
+
+.result-item {
+
+    background: rgba(255,255,255,.03);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-md);
+
+    padding: 22px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.result-item span {
+
+    color: var(--text-secondary);
+}
+
+.result-item strong {
+
+    font-size: 1.2rem;
+
+    color: var(--text);
+}
+
+/* Buttons */
+
+.result-card .btn,
+.result-card .btn-secondary {
+
+    width: 100%;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width:768px){
+
+    .result-card{
+
+        margin:30px auto;
+
+        gap:18px;
+    }
+
+    .score-box{
+
+        padding:24px;
+    }
+
+    .score-box h2{
+
+        font-size:3rem;
+    }
+
+    .result-grid{
+
+        grid-template-columns:1fr;
+    }
+
+}

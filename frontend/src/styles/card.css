@@ -1,0 +1,149 @@
+/* =====================================
+   BASE CARD
+===================================== */
+
+.card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    padding:var(--space-xl);
+
+    transition:var(--transition);
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.card:hover{
+
+    border-color:var(--border-hover);
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-md);
+
+}
+
+/* =====================================
+   CARD HEADER
+===================================== */
+
+.card-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:20px;
+
+}
+
+/* =====================================
+   CARD BODY
+===================================== */
+
+.card-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
+}
+
+/* =====================================
+   CARD FOOTER
+===================================== */
+
+.card-footer{
+
+    margin-top:24px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+/* =====================================
+   CLICKABLE CARD
+===================================== */
+
+.card-clickable{
+
+    cursor:pointer;
+
+}
+
+.card-clickable:hover{
+
+    border-color:var(--primary);
+
+}
+
+/* =====================================
+   DISABLED CARD
+===================================== */
+
+.card-disabled{
+
+    opacity:.6;
+
+    pointer-events:none;
+
+}
+
+/* =====================================
+   STAT CARD
+===================================== */
+
+.stat-card{
+
+    text-align:center;
+
+}
+
+.stat-card h3{
+
+    color:var(--text-secondary);
+
+    font-size:15px;
+
+    margin-bottom:16px;
+
+}
+
+.stat-card p{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:768px){
+
+    .card{
+
+        padding:22px;
+
+        border-radius:18px;
+
+    }
+
+}

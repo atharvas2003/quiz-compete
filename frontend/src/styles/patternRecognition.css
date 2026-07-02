@@ -1,0 +1,75 @@
+.pattern{
+
+    width:min(1200px,90%);
+    margin:100px auto;
+
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+.pattern h2{
+
+    font-size:3.2rem;
+
+    line-height:1.15;
+
+    margin:25px 0;
+
+}
+
+.pattern p{
+
+    color:var(--text-secondary);
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+}
+
+.pattern ul{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+    list-style:none;
+
+}
+
+.brain-card{
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:45px;
+
+    text-align:center;
+
+}
+
+.brain{
+
+    font-size:70px;
+
+    margin-bottom:25px;
+
+}
+
+.brain-card h3{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+}

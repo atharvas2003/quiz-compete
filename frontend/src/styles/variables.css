@@ -1,0 +1,108 @@
+:root {
+
+    /* =========================
+       COLOURS
+    ========================= */
+
+    --bg: #181818;
+    --bg-secondary: #202020;
+    --surface: #252525;
+    --surface-hover: #2d2d2d;
+    --surface-light: #333333;
+
+    --border: #3a3a3a;
+    --border-hover: #f59e0b;
+
+    /* =========================
+       BRAND
+    ========================= */
+
+    --primary: #f59e0b;
+    --primary-dark: #ea8c00;
+    --primary-light: #ffb84d;
+
+    --primary-gradient:
+        linear-gradient(
+            135deg,
+            #f59e0b,
+            #ff6b00
+        );
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #facc15;
+    --info: #3b82f6;
+
+    /* =========================
+       TEXT
+    ========================= */
+
+    --text: #f5f5f5;
+    --text-secondary: #9ca3af;
+    --text-muted: #737373;
+
+    /* =========================
+       SPACING
+    ========================= */
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 72px;
+    --space-4xl: 96px;
+
+    /* =========================
+       BORDER RADIUS
+    ========================= */
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 22px;
+    --radius-xl: 32px;
+    --radius-pill: 999px;
+
+    /* =========================
+       SHADOWS
+    ========================= */
+
+    --shadow-sm:
+        0 4px 10px rgba(0,0,0,.20);
+
+    --shadow-md:
+        0 12px 30px rgba(0,0,0,.30);
+
+    --shadow-lg:
+        0 25px 60px rgba(0,0,0,.40);
+
+    /* =========================
+       TRANSITIONS
+    ========================= */
+
+    --transition-fast: .2s ease;
+    --transition: .3s ease;
+    --transition-slow: .45s ease;
+
+    /* =========================
+       LAYOUT
+    ========================= */
+
+    --container-width: 1200px;
+    --navbar-height: 80px;
+
+    /* =========================
+       Z INDEX
+    ========================= */
+
+    --z-navbar: 100;
+    --z-dropdown: 200;
+    --z-modal: 500;
+    --z-toast: 1000;
+
+}

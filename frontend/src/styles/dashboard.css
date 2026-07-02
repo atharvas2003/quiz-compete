@@ -1,0 +1,425 @@
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-container{
+    max-width:1200px;
+    margin:0 auto;
+    padding:60px 20px 80px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.dashboard-hero{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.dashboard-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:rgba(245,158,11,.15);
+    color:#f59e0b;
+
+    padding:10px 22px;
+    border-radius:999px;
+
+    font-weight:600;
+    font-size:15px;
+
+    margin-bottom:24px;
+}
+
+.dashboard-hero h1{
+    font-size:clamp(42px,6vw,68px);
+    line-height:1.1;
+    font-weight:800;
+    color:#ffffff;
+
+    margin-bottom:22px;
+}
+
+.dashboard-hero p{
+    max-width:650px;
+    margin:0 auto 35px;
+
+    color:#9ca3af;
+
+    font-size:19px;
+    line-height:1.8;
+}
+
+/* =========================
+   RATING CARD
+========================= */
+
+.dashboard-rating{
+    display:flex;
+    justify-content:center;
+    margin-bottom:60px;
+}
+
+.rating-card{
+    width:320px;
+
+    background:#232323;
+
+    border:1px solid #353535;
+    border-radius:22px;
+
+    padding:36px;
+
+    text-align:center;
+
+    transition:.25s;
+}
+
+.rating-card:hover{
+    transform:translateY(-4px);
+    border-color:#f59e0b;
+}
+
+.rating-card span{
+    display:block;
+
+    color:#9ca3af;
+
+    font-size:15px;
+
+    margin-bottom:12px;
+}
+
+.rating-card h2{
+    color:#f59e0b;
+
+    font-size:58px;
+    font-weight:800;
+
+    margin-bottom:10px;
+}
+
+.rating-card small{
+    color:#6b7280;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.dashboard-actions{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:22px;
+
+    margin-bottom:70px;
+
+}
+
+.dashboard-card{
+
+    background:#232323;
+
+    border:1px solid #343434;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:#f59e0b;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.dashboard-card.disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+.dashboard-card h2{
+
+    color:#ffffff;
+
+    margin-bottom:14px;
+
+    font-size:28px;
+
+}
+
+.dashboard-card p{
+
+    color:#9ca3af;
+
+    line-height:1.7;
+
+}
+
+/* =========================
+   STATS
+========================= */
+
+.dashboard-stats{
+
+    margin-bottom:70px;
+
+}
+
+.dashboard-stats h2{
+
+    color:#ffffff;
+
+    margin-bottom:25px;
+
+    font-size:34px;
+
+}
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:22px;
+
+}
+
+.stat-card{
+
+    background:#232323;
+
+    border:1px solid #343434;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-align:center;
+
+    transition:.25s;
+
+}
+
+.stat-card:hover{
+
+    border-color:#f59e0b;
+
+}
+
+.stat-card h3{
+
+    color:#9ca3af;
+
+    margin-bottom:18px;
+
+    font-size:17px;
+
+}
+
+.stat-card p{
+
+    color:#f59e0b;
+
+    font-size:46px;
+
+    font-weight:800;
+
+}
+
+/* =========================
+   RECENT
+========================= */
+
+.dashboard-recent{
+
+    margin-bottom:40px;
+
+}
+
+.recent-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+}
+
+.recent-header h2{
+
+    color:#ffffff;
+
+    font-size:34px;
+
+}
+
+.view-all-btn{
+
+    background:none;
+
+    border:1px solid #f59e0b;
+
+    color:#f59e0b;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.view-all-btn:hover{
+
+    background:#f59e0b;
+
+    color:#111;
+
+}
+
+.recent-card{
+
+    background:#232323;
+
+    border:1px solid #343434;
+
+    border-radius:22px;
+
+    padding:35px;
+
+}
+
+.recent-card p{
+
+    color:#9ca3af;
+
+    margin-bottom:25px;
+
+    line-height:1.8;
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .dashboard-container{
+
+        padding:35px 18px 60px;
+
+    }
+
+    .dashboard-hero{
+
+        margin-bottom:35px;
+
+    }
+
+    .dashboard-hero h1{
+
+        font-size:48px;
+
+    }
+
+    .dashboard-hero p{
+
+        font-size:17px;
+
+    }
+
+    .dashboard-rating{
+
+        margin-bottom:45px;
+
+    }
+
+    .rating-card{
+
+        width:100%;
+
+    }
+
+    .dashboard-actions{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .recent-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:16px;
+
+    }
+
+}
+
+@media(max-width:520px){
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard-hero h1{
+
+        font-size:42px;
+
+    }
+
+    .dashboard-card{
+
+        padding:24px;
+
+    }
+
+    .rating-card{
+
+        padding:28px;
+
+    }
+
+    .stat-card{
+
+        padding:28px;
+
+    }
+
+}

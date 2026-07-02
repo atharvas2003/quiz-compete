@@ -1,0 +1,138 @@
+/* ==========================================
+   HISTORY PAGE
+========================================== */
+
+.history-wrapper{
+
+    width:min(1100px,92%);
+    margin:0 auto;
+
+}
+
+.history-header{
+
+    text-align:center;
+    margin-bottom:50px;
+
+}
+
+.history-header p{
+
+    color:var(--text-secondary);
+    margin-top:14px;
+
+}
+
+.history-grid{
+
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.history-card{
+
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+
+}
+
+.history-top{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.history-top h2{
+
+    font-size:1.4rem;
+
+}
+
+.history-top span{
+
+    color:var(--text-secondary);
+    font-weight:600;
+
+}
+
+/* ==========================================
+   STATS
+========================================== */
+
+.history-stats{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+
+}
+
+.history-stats div{
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-md);
+
+    padding:18px;
+
+}
+
+.history-stats small{
+
+    display:block;
+
+    color:var(--text-secondary);
+
+    margin-bottom:8px;
+
+}
+
+.history-stats strong{
+
+    font-size:1.4rem;
+
+}
+
+/* ==========================================
+   EMPTY STATE
+========================================== */
+
+.history-empty{
+
+    max-width:500px;
+    margin:80px auto;
+    text-align:center;
+
+}
+
+.history-empty p{
+
+    color:var(--text-secondary);
+    margin-top:12px;
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .history-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
