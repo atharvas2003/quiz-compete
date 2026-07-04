@@ -29,3 +29,9 @@ class QuestionWithOptions(BaseModel):
 
     class Config:
         from_attributes = True
+
+class QuestionUpdate(BaseModel):
+    question_text: str
+    difficulty: str
+    topic_id: int
+    subtopic_id: int

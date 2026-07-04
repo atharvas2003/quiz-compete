@@ -11,7 +11,8 @@ from app.models.question import Question
 from app.schemas.question import (
     QuestionCreate,
     QuestionResponse,
-    QuestionWithOptions
+    QuestionWithOptions,
+    QuestionUpdate
 )
 router = APIRouter(
     prefix="/questions",
@@ -117,3 +118,59 @@ def get_questions_by_subtopic(
         .all()
     )
     return questions
+
+@router.put("/{question_id}", response_model=QuestionResponse)
+def update_question(
+    question_id: int,
+    updated_question: QuestionUpdate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(admin_only)
+):
+
+    question = (
+        db.query(Question)
+        .filter(Question.id == question_id)
+        .first()
+    )
+
+    if not question:
+        raise HTTPException(
+            status_code=404,
+            detail="Question not found"
+        )
+
+    question.question_text = updated_question.question_text
+    question.difficulty = updated_question.difficulty
+    question.topic_id = updated_question.topic_id
+    question.subtopic_id = updated_question.subtopic_id
+
+    db.commit()
+    db.refresh(question)
+
+    return question
+
+@router.delete("/{question_id}")
+def delete_question(
+    question_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(admin_only)
+):
+
+    question = (
+        db.query(Question)
+        .filter(Question.id == question_id)
+        .first()
+    )
+
+    if not question:
+        raise HTTPException(
+            status_code=404,
+            detail="Question not found"
+        )
+
+    db.delete(question)
+    db.commit()
+
+    return {
+        "message": "Question deleted successfully"
+    }

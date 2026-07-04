@@ -29,5 +29,6 @@ class Question(Base):
 
     options = relationship(
                 "Option",
-                back_populates= "question"
+                back_populates= "question",
+                cascade="all, delete-orphan"
             )
