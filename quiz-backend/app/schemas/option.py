@@ -5,6 +5,12 @@ class OptionCreate(BaseModel):
     is_correct: bool
     question_id: int
     
+class OptionUpdate(BaseModel):
+    option_text: str
+    is_correct: bool
+
+    class Config:
+        from_attributes = True
 
 class OptionResponse(BaseModel):
     id: int

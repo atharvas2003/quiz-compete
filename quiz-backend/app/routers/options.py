@@ -9,7 +9,8 @@ from app.models.user import User
 from app.models.option import Option
 from app.schemas.option import (
     OptionCreate,
-    OptionResponse
+    OptionResponse,
+    OptionUpdate
 )
 
 router = APIRouter(
@@ -60,5 +61,33 @@ def get_option(
             status_code=404,
             detail="Option not found"
         )
+
+    return option
+
+@router.put("/{option_id}", response_model=OptionResponse)
+def update_option(
+    option_id: int,
+    updated_option: OptionUpdate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(admin_only)
+):
+
+    option = (
+        db.query(Option)
+        .filter(Option.id == option_id)
+        .first()
+    )
+
+    if not option:
+        raise HTTPException(
+            status_code=404,
+            detail="Option not found"
+        )
+
+    option.option_text = updated_option.option_text
+    option.is_correct = updated_option.is_correct
+
+    db.commit()
+    db.refresh(option)
 
     return option
