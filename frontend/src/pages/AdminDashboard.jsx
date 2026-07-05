@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 
-import TopicManager from "../components/Admin/TopicManager";
-import SubtopicManager from "../components/Admin/SubtopicManager";
-import QuestionManager from "../components/Admin/QuestionManager";
-import CSVUpload from "../components/Admin/CsvUpload";
+import TopicManager from "../components/admin/TopicManager";
+import SubtopicManager from "../components/admin/SubtopicManager";
+import QuestionManager from "../components/admin/QuestionManager";
+import CSVUpload from "../components/admin/CsvUpload";
 
 import "../styles/admin.css";
 
