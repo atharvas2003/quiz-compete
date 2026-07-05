@@ -1,0 +1,70 @@
+.not-found-page {
+    min-height: 100vh;
+    background: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+.not-found-card {
+    max-width: 520px;
+    width: 100%;
+    text-align: center;
+    background: #1b1b1b;
+    border: 1px solid #2b2b2b;
+    border-radius: 18px;
+    padding: 48px 32px;
+}
+
+.not-found-card h1 {
+    font-size: 90px;
+    color: #ff9800;
+    margin: 0;
+}
+
+.not-found-card h2 {
+    color: white;
+    margin-top: 10px;
+}
+
+.not-found-card p {
+    color: #a0a0a0;
+    margin: 20px 0 35px;
+    line-height: 1.6;
+}
+
+.not-found-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+    text-decoration: none;
+    padding: 14px 30px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: .2s;
+}
+
+.primary-btn {
+    background: #ff9800;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #f57c00;
+}
+
+.secondary-btn {
+    border: 1px solid #ff9800;
+    color: #ff9800;
+}
+
+.secondary-btn:hover {
+    background: #ff9800;
+    color: white;
+}

@@ -12,6 +12,7 @@ import Review from "./pages/Review";
 import SessionReview from "./pages/SessionReview";
 import TopicSelection from "./pages/TopicSelection";
 import AdminDashboard from "./pages/AdminDashboard";
+import NotFound from "./pages/Notfound";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -106,6 +107,7 @@ function App() {
                     </ProtectedRoute>
                 }
             />
+            <Route path="*" element={<NotFound />} />
 
         </Routes>
     );

@@ -32,6 +32,9 @@ function TopicSelection() {
         localStorage.setItem("topic_id", topic.id);
         localStorage.setItem("topic_name", topic.name);
 
+        console.log("Selected Topic:", localStorage.getItem("topic_id"));
+        console.log("Selected Topic Name:", localStorage.getItem("topic_name"));
+
         navigate("/quiz");
 
     };
