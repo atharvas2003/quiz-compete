@@ -32,7 +32,7 @@ function Navbar() {
                 className="navbar-logo"
                 to="/"
             >
-                🧠 QuizCompete
+                Prep Arena
             </Link>
 
             <button

@@ -11,13 +11,10 @@ api.interceptors.request.use((config) => {
 );
 
 const token = auth?.token;
-    console.log("TOKEN:", token);
 
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
     }
-
-    console.log(config.headers);
 
     return config;
 });

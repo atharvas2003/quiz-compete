@@ -2,49 +2,72 @@ import { useState } from "react";
 import api from "../../services/api";
 
 function CSVUpload({
-
     topics,
     subtopics,
     selectedTopic,
-    selectedSubtopic
-
+    selectedSubtopic,
+    setSelectedTopic,
+    setSelectedSubtopic,
 }) {
 
     const [file, setFile] = useState(null);
 
     const [loading, setLoading] = useState(false);
 
-    const uploadCSV = async () => {
+    const [result, setResult] = useState(null);
 
-        if (!file) {
+    const handleUpload = async () => {
 
-            alert("Please select a CSV file.");
-
+        if (!selectedTopic) {
+            alert("Please select a topic.");
             return;
-
         }
 
-        const formData = new FormData();
+        if (!selectedSubtopic) {
+            alert("Please select a subtopic.");
+            return;
+        }
 
-        formData.append("file", file);
-
-        formData.append("topic_id", selectedTopic);
-
-        formData.append("subtopic_id", selectedSubtopic);
+        if (!file) {
+            alert("Please choose a CSV file.");
+            return;
+        }
 
         try {
 
             setLoading(true);
 
-            const response = await api.post(
+            setResult(null);
 
-                "/admin/upload-csv",
+            const formData = new FormData();
 
-                formData
-
+            formData.append(
+                "topic_id",
+                Number(selectedTopic)
             );
 
-            alert(response.data.message);
+            formData.append(
+                "subtopic_id",
+                Number(selectedSubtopic)
+            );
+
+            formData.append(
+                "file",
+                file
+            );
+
+            const { data } = await api.post(
+                "/admin/upload-csv",
+                formData,
+                {
+                    headers: {
+                        "Content-Type":
+                            "multipart/form-data",
+                    },
+                }
+            );
+
+            setResult(data);
 
             setFile(null);
 
@@ -81,7 +104,11 @@ function CSVUpload({
                 <select
                     className="input"
                     value={selectedTopic}
-                    disabled
+                    onChange={(e) =>
+                        setSelectedTopic(
+                            e.target.value
+                        )
+                    }
                 >
 
                     {topics.map(topic => (
@@ -100,7 +127,11 @@ function CSVUpload({
                 <select
                     className="input"
                     value={selectedSubtopic}
-                    disabled
+                    onChange={(e) =>
+                        setSelectedSubtopic(
+                            e.target.value
+                        )
+                    }
                 >
 
                     {subtopics.map(subtopic => (
@@ -117,40 +148,84 @@ function CSVUpload({
                 </select>
 
                 <input
-
-                    type="file"
-
                     className="input"
-
+                    type="file"
                     accept=".csv"
-
                     onChange={(e) =>
-                        setFile(e.target.files[0])
+                        setFile(
+                            e.target.files[0]
+                        )
                     }
-
                 />
 
                 <button
-
                     className="btn"
-
                     disabled={loading}
-
-                    onClick={uploadCSV}
-
+                    onClick={handleUpload}
                 >
 
-                    {
-
-                        loading
-
-                            ? "Uploading..."
-
-                            : "Upload CSV"
-
-                    }
+                    {loading
+                        ? "Uploading..."
+                        : "Upload CSV"}
 
                 </button>
+
+                {result && (
+
+                    <div
+                        className="card"
+                        style={{
+                            marginTop: "20px"
+                        }}
+                    >
+
+                        <h3>
+                            Upload Summary
+                        </h3>
+
+                        <p>
+                            <strong>Inserted:</strong>{" "}
+                            {result.inserted}
+                        </p>
+
+                        <p>
+                            <strong>Skipped:</strong>{" "}
+                            {result.skipped}
+                        </p>
+
+                        {result.errors.length > 0 && (
+
+                            <>
+
+                                <h4>
+                                    Errors
+                                </h4>
+
+                                <ul>
+
+                                    {result.errors.map(
+                                        (error, index) => (
+
+                                            <li
+                                                key={index}
+                                            >
+                                                Row {error.row} :
+                                                {" "}
+                                                {error.reason}
+                                            </li>
+
+                                        )
+                                    )}
+
+                                </ul>
+
+                            </>
+
+                        )}
+
+                    </div>
+
+                )}
 
             </div>
 

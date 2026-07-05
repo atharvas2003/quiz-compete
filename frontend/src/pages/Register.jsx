@@ -61,7 +61,7 @@ function Register() {
                         marginBottom: "24px"
                     }}
                 >
-                    Join Quiz Compete
+                    Join Prep Arena
                 </p>
 
                 <Input

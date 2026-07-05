@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
 
-import TopicManager from "../components/admin/TopicManager";
-import SubtopicManager from "../components/admin/SubtopicManager";
-import QuestionManager from "../components/admin/QuestionManager";
-import CSVUpload from "../components/admin/CSVUpload";
+import TopicManager from "../components/Admin/TopicManager";
+import SubtopicManager from "../components/Admin/SubtopicManager";
+import QuestionManager from "../components/Admin/QuestionManager";
+import CSVUpload from "../components/Admin/CsvUpload";
 
 import "../styles/admin.css";
 
@@ -109,11 +109,13 @@ function AdminDashboard() {
             />
 
             <CSVUpload
-                topics={topics}
-                subtopics={subtopics}
-                selectedTopic={selectedTopic}
-                selectedSubtopic={selectedSubtopic}
-            />
+    topics={topics}
+    subtopics={subtopics}
+    selectedTopic={selectedTopic}
+    selectedSubtopic={selectedSubtopic}
+    setSelectedTopic={setSelectedTopic}
+    setSelectedSubtopic={setSelectedSubtopic}
+/>
 
         </main>
 

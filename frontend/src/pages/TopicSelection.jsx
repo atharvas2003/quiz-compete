@@ -16,7 +16,7 @@ function TopicSelection() {
 
         try {
 
-            const response = await api.get("/topics/topics");
+            const response = await api.get("/topics");
             setTopics(response.data);
 
         } catch (err) {

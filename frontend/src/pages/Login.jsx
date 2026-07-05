@@ -85,7 +85,7 @@ function Login() {
 
                 <h1 className="page-title">
 
-                    Quiz Compete
+                    Prep Arena
 
                 </h1>
 

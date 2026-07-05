@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../../services/api";
+import OptionEditor from "./OptionEditor";
 
 function QuestionForm({
     topics,
@@ -8,6 +9,9 @@ function QuestionForm({
     selectedSubtopic,
     setSelectedTopic,
     setSelectedSubtopic,
+    editingQuestion,
+    setEditingQuestion,
+    refreshQuestions,
 }) {
 
     const [questionText, setQuestionText] = useState("");
@@ -24,15 +28,45 @@ function QuestionForm({
 
     const [loading, setLoading] = useState(false);
 
-    const updateOption = (index, value) => {
+    useEffect(() => {
 
-        const updated = [...options];
+        if (!editingQuestion) {
 
-        updated[index] = value;
+            resetForm();
 
-        setOptions(updated);
+            return;
 
-    };
+        }
+
+        setQuestionText(
+            editingQuestion.question_text
+        );
+
+        setDifficulty(
+            editingQuestion.difficulty
+        );
+
+        setSelectedTopic(
+            String(editingQuestion.topic_id)
+        );
+
+        setSelectedSubtopic(
+            String(editingQuestion.subtopic_id)
+        );
+
+        setOptions(
+            editingQuestion.options.map(
+                option => option.option_text
+            )
+        );
+
+        setCorrectOption(
+            editingQuestion.options.findIndex(
+                option => option.is_correct
+            )
+        );
+
+    }, [editingQuestion]);
 
     const resetForm = () => {
 
@@ -49,75 +83,151 @@ function QuestionForm({
 
         setCorrectOption(0);
 
+        setEditingQuestion(null);
+
+    };
+
+    const validate = () => {
+
+        if (!questionText.trim()) {
+
+            alert("Question is required.");
+
+            return false;
+
+        }
+
+        if (options.some(option => !option.trim())) {
+
+            alert("All four options are required.");
+
+            return false;
+
+        }
+
+        return true;
+
+    };
+
+    const handleCreate = async () => {
+
+        const questionResponse = await api.post(
+            "/questions",
+            {
+                question_text: questionText,
+                difficulty,
+                topic_id: Number(selectedTopic),
+                subtopic_id: Number(selectedSubtopic)
+            }
+        );
+
+        const questionId = questionResponse.data.id;
+
+        for (let i = 0; i < options.length; i++) {
+
+            await api.post(
+                "/options",
+                {
+                    option_text: options[i],
+                    is_correct: i === correctOption,
+                    question_id: questionId
+                }
+            );
+
+        }
+
+    };
+
+    const handleUpdate = async () => {
+
+        await api.put(
+
+            `/questions/${editingQuestion.id}`,
+
+            {
+                question_text: questionText,
+                difficulty,
+                topic_id: Number(selectedTopic),
+                subtopic_id: Number(selectedSubtopic)
+            }
+
+        );
+
+        for (let i = 0; i < editingQuestion.options.length; i++) {
+
+            await api.put(
+
+                `/options/${editingQuestion.options[i].id}`,
+
+                {
+                    option_text: options[i],
+                    is_correct: i === correctOption
+                }
+
+            );
+
+        }
+
     };
 
     const handleSubmit = async () => {
 
-        if (!questionText.trim()) {
-            return alert("Enter a question.");
-        }
-
-        if (options.some(option => !option.trim())) {
-            return alert("Fill all four options.");
-        }
+        if (!validate()) return;
 
         try {
 
             setLoading(true);
 
-            const questionResponse = await api.post(
-                "/questions",
-                {
-                    question_text: questionText,
-                    difficulty,
-                    topic_id: Number(selectedTopic),
-                    subtopic_id: Number(selectedSubtopic)
-                }
-            );
+            if (editingQuestion) {
 
-            const questionId = questionResponse.data.id;
+                await handleUpdate();
 
-            for (let i = 0; i < options.length; i++) {
-
-                await api.post("/options", {
-
-                    option_text: options[i],
-
-                    is_correct: i === correctOption,
-
-                    question_id: questionId
-
-                });
+                alert("Question updated.");
 
             }
 
-            alert("Question created successfully.");
+            else {
+
+                await handleCreate();
+
+                alert("Question created.");
+
+            }
 
             resetForm();
 
-        } catch (err) {
+            await refreshQuestions();
+
+        }
+
+        catch (err) {
 
             console.error(err);
 
-            alert("Unable to create question.");
+            alert("Operation failed.");
 
-        } finally {
+        }
+
+        finally {
 
             setLoading(false);
 
         }
 
     };
+    
 
     return (
 
-        <>
+        <div>
 
             <select
                 className="input"
                 value={selectedTopic}
                 onChange={(e) =>
-                    setSelectedTopic(e.target.value)
+                    setSelectedTopic(
+                        e.target.value
+                    )
                 }
             >
 
@@ -138,7 +248,9 @@ function QuestionForm({
                 className="input"
                 value={selectedSubtopic}
                 onChange={(e) =>
-                    setSelectedSubtopic(e.target.value)
+                    setSelectedSubtopic(
+                        e.target.value
+                    )
                 }
             >
 
@@ -159,70 +271,71 @@ function QuestionForm({
                 className="input"
                 value={difficulty}
                 onChange={(e) =>
-                    setDifficulty(e.target.value)
+                    setDifficulty(
+                        e.target.value
+                    )
                 }
             >
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
+
+                <option value="easy">
+                    Easy
+                </option>
+
+                <option value="medium">
+                    Medium
+                </option>
+
+                <option value="hard">
+                    Hard
+                </option>
+
             </select>
 
             <textarea
                 className="input"
                 rows={4}
-                placeholder="Enter question"
+                placeholder="Question"
                 value={questionText}
                 onChange={(e) =>
-                    setQuestionText(e.target.value)
+                    setQuestionText(
+                        e.target.value
+                    )
                 }
             />
 
-            {options.map((option, index) => (
+            <OptionEditor
 
-                <div
-                    key={index}
-                    className="option-row"
-                >
+                options={options}
+                setOptions={setOptions}
 
-                    <input
-                        className="input"
-                        placeholder={`Option ${index + 1}`}
-                        value={option}
-                        onChange={(e) =>
-                            updateOption(index, e.target.value)
-                        }
-                    />
+                correctOption={correctOption}
+                setCorrectOption={setCorrectOption}
 
-                    <label className="option-correct">
-
-                        <input
-                            type="radio"
-                            name="correct-option"
-                            checked={correctOption === index}
-                            onChange={() =>
-                                setCorrectOption(index)
-                            }
-                        />
-
-                        Correct
-
-                    </label>
-
-                </div>
-
-            ))}
+            />
 
             <button
                 className="btn"
                 disabled={loading}
                 onClick={handleSubmit}
             >
-                {loading
-                    ? "Saving..."
-                    : "Save Question"}
+
+                {
+
+                    loading
+
+                        ? "Saving..."
+
+                        : editingQuestion
+
+                        ? "Update Question"
+
+                        : "Save Question"
+
+                }
+
             </button>
 
-        </>
+        </div>
 
     );
 

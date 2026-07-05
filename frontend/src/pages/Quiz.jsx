@@ -24,7 +24,7 @@ function Quiz() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log("Quiz Mounted");
+        
         startQuiz();
     }, []);
 
@@ -43,9 +43,6 @@ function Quiz() {
                         total_questions: 10
                     }
                 );
-
-            console.log("Session:");
-            console.log(sessionResponse.data);
 
             setSessionId(
                 sessionResponse.data.id
