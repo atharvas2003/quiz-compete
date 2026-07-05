@@ -108,11 +108,6 @@ def login_user(
     user_credentials: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db)
 ):
-    print(user_credentials.username)
-    print(user_credentials.password)
-
-    print("LOGIN ATTEMPT")
-    print("EMAIL:", user_credentials.username)
 
     user = (
         db.query(User)

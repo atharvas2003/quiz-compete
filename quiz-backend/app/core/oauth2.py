@@ -19,23 +19,19 @@ def get_current_user(
     token: str = Depends(oauth2_scheme),
     db: Session = Depends(get_db)
 ):
-    print("=" * 50)
-    print("Token Received:", token)
-    print("Get Current user hit")
-    print(token)
+    
 
     payload = verify_access_token(token)
 
-    print("Payload:", payload)
+    
 
     if payload is None:
-        print("payload is none")
+        
         raise HTTPException(
             status_code=401,
             detail="Invalid Token"
         )
     
-    print("User", payload.get("user_id"))
 
     user = (
         db.query(User)
@@ -45,7 +41,6 @@ def get_current_user(
         .first()
     )
 
-    print("users:", user)
 
     if user is None:
         raise HTTPException(

@@ -9,10 +9,12 @@ from app.models.user import User
 
 from app.models.question import Question
 from app.schemas.question import (
+    PaginatedQuestionResponse,
     QuestionCreate,
     QuestionResponse,
     QuestionWithOptions,
-    QuestionUpdate
+    QuestionUpdate,
+    PaginatedQuestionResponse
 )
 router = APIRouter(
     prefix="/questions",
@@ -42,13 +44,49 @@ def create_question(
 
 
 # Get All Questions
-@router.get("/", response_model=list[QuestionResponse])
+@router.get("/", response_model=PaginatedQuestionResponse)
 def get_questions(
+    topic_id: int | None = None,
+    subtopic_id: int | None = None,
+    difficulty: str | None = None,
+    page: int = 1,
+    limit: int = 20,
     db: Session = Depends(get_db)
 ):
 
-    return db.query(Question).all()
+    query = db.query(Question)
 
+    if topic_id is not None:
+        query = query.filter(
+            Question.topic_id == topic_id
+        )
+
+    if subtopic_id is not None:
+        query = query.filter(
+            Question.subtopic_id == subtopic_id
+        )
+
+    if difficulty is not None:
+        query = query.filter(
+            Question.difficulty == difficulty
+        )
+
+    total = query.count()
+
+    questions = (
+        query
+        .order_by(Question.id.desc())
+        .offset((page - 1) * limit)
+        .limit(limit)
+        .all()
+    )
+
+    return {
+        "total": total,
+        "page": page,
+        "limit": limit,
+        "questions": questions
+    }
 
 # Get Single Question
 @router.get("/{question_id}", response_model=QuestionResponse)
@@ -89,7 +127,6 @@ def get_question_with_options(
             detail="Question not found"
         )
     
-    print(Option)
 
     options = (
         db.query(Option)

@@ -62,11 +62,6 @@ def start_quiz(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
-    print("CURRENT USER:")
-    print(current_user.id)
-    print(current_user.email)
-    
-    print("START QUIZ HIT")
     new_session = QuizSession(
         user_id = current_user.id,
         topic_id = quiz.topic_id,
@@ -84,7 +79,6 @@ def submit_quiz(
     answer: SubmitAnswer,
     db: Session = Depends(get_db)
 ):
-    print("Submit quiz hit")
     session = (
         db.query(QuizSession)
         .filter(QuizSession.id == answer.session_id)
@@ -135,7 +129,6 @@ def submit_quiz(
     db.add(attempt)
     db.commit()
     db.refresh(attempt)
-    print(attempt.id)
 
     if option.is_correct:
         session.correct_answers+=1

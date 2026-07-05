@@ -39,7 +39,7 @@ def create_topic(
 
     return new_topic
 
-@router.get("/topics", response_model=list[TopicResponse])
+@router.get("/", response_model=list[TopicResponse])
 def get_topics(
     db: Session = Depends(get_db)
 ):

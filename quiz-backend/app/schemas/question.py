@@ -35,3 +35,12 @@ class QuestionUpdate(BaseModel):
     difficulty: str
     topic_id: int
     subtopic_id: int
+
+class PaginatedQuestionResponse(BaseModel):
+    total: int
+    page: int
+    limit: int
+    questions: list[QuestionResponse]
+
+    class Config:
+        from_attributes = True
