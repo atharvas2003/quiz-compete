@@ -10,8 +10,8 @@ export default function NotFound() {
                 <h2>Page Not Found</h2>
 
                 <p>
-                    The page you're looking for doesn't exist or may have been
-                    moved.
+                    Looks like you've taken a wrong turn.
+                    The page you're looking for doesn't exist or the URL may be incorrect.
                 </p>
 
                 <div className="not-found-actions">
