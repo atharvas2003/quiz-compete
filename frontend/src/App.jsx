@@ -12,7 +12,7 @@ import Review from "./pages/Review";
 import SessionReview from "./pages/SessionReview";
 import TopicSelection from "./pages/TopicSelection";
 import AdminDashboard from "./pages/AdminDashboard";
-import NotFound from "./pages/Notfound";
+import NotFound from "./pages/NotFound";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -107,7 +107,22 @@ function App() {
                     </ProtectedRoute>
                 }
             />
-            <Route path="*" element={<NotFound />} />
+            <Route
+    path="*"
+    element={
+        <div
+            style={{
+                color: "white",
+                fontSize: "48px",
+                padding: "100px",
+                background: "#111",
+                minHeight: "100vh",
+            }}
+        >
+            HELLO FROM 404
+        </div>
+    }
+/>
 
         </Routes>
     );
