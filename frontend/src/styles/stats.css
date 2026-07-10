@@ -1,41 +1,121 @@
-.stats{
+.stats {
+    width: min(1200px, 90%);
+    margin: 80px auto;
 
-    width:min(1200px,90%);
-    margin:80px auto;
-
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-
-    gap:24px;
-
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
 }
 
-.stat-card{
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
 
-    background:var(--surface);
+    padding: 35px 24px;
+    min-height: 180px;
 
-    border:1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    border-radius:20px;
+    text-align: center;
 
-    text-align:center;
-
-    padding:35px;
-
+    transition: all 0.3s ease;
 }
 
-.stat-card h2{
-
-    color:var(--primary);
-
-    font-size:3rem;
-
-    margin-bottom:10px;
-
+.stat-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
 }
 
-.stat-card p{
+.stat-card h2 {
+    color: var(--primary);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1;
+}
 
-    color:var(--text-secondary);
+.stat-card p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin: 0;
+}
 
+/* ==========================
+   Tablet
+========================== */
+
+@media (max-width: 992px) {
+    .stats {
+        gap: 20px;
+    }
+
+    .stat-card {
+        min-height: 165px;
+        padding: 30px 20px;
+    }
+
+    .stat-card h2 {
+        font-size: 2.5rem;
+    }
+
+    .stat-card p {
+        font-size: 1rem;
+    }
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width: 768px) {
+    .stats {
+        width: 92%;
+        margin: 60px auto;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .stat-card {
+        min-height: 150px;
+        padding: 24px 16px;
+    }
+
+    .stat-card h2 {
+        font-size: 2rem;
+    }
+
+    .stat-card p {
+        font-size: 0.95rem;
+    }
+}
+
+/* ==========================
+   Small Mobile
+========================== */
+
+@media (max-width: 480px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .stat-card {
+        min-height: 135px;
+        padding: 20px 14px;
+    }
+
+    .stat-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .stat-card p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
 }

@@ -1,75 +1,191 @@
-.pattern{
+.pattern {
+    width: min(1200px, 90%);
+    margin: 100px auto;
 
-    width:min(1200px,90%);
-    margin:100px auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
 
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-
-    gap:60px;
-
-    align-items:center;
-
+    align-items: center;
 }
 
-.pattern h2{
-
-    font-size:3.2rem;
-
-    line-height:1.15;
-
-    margin:25px 0;
-
+.pattern-left {
+    width: 100%;
 }
 
-.pattern p{
+.badge {
+    display: inline-flex;
+    align-items: center;
 
-    color:var(--text-secondary);
+    padding: 10px 18px;
 
-    line-height:1.8;
+    background: rgba(255, 165, 0, 0.12);
+    color: var(--primary);
 
-    margin-bottom:30px;
+    border: 1px solid rgba(255, 165, 0, 0.2);
+    border-radius: 999px;
 
+    font-size: 0.95rem;
+    font-weight: 600;
 }
 
-.pattern ul{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:18px;
-
-    list-style:none;
-
+.pattern h2 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1.15;
+    margin: 25px 0;
 }
 
-.brain-card{
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    border-radius:24px;
-
-    padding:45px;
-
-    text-align:center;
-
+.pattern p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 30px;
 }
 
-.brain{
-
-    font-size:70px;
-
-    margin-bottom:25px;
-
+.pattern ul {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.brain-card h3{
+.pattern ul li {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
 
-    font-size:2rem;
+.brain-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
 
-    margin-bottom:15px;
+    padding: 45px;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    min-height: 420px;
+
+    transition: all 0.3s ease;
+}
+
+.brain-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+}
+
+.brain {
+    font-size: 70px;
+    margin-bottom: 25px;
+}
+
+.brain-card h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.brain-card p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* ==========================
+   Tablet
+========================== */
+
+@media (max-width: 992px) {
+
+    .pattern {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .brain-card {
+        min-height: auto;
+        padding: 40px;
+    }
+
+    .pattern h2 {
+        text-align: center;
+    }
+
+    .pattern p {
+        text-align: center;
+    }
+
+    .pattern ul {
+        align-items: center;
+    }
+}
+
+/* ==========================
+   Mobile
+========================== */
+
+@media (max-width: 768px) {
+
+    .pattern {
+        width: 92%;
+        margin: 70px auto;
+        gap: 32px;
+    }
+
+    .badge {
+        display: inline-flex;
+        margin: 0 auto;
+    }
+
+    .pattern-left {
+        text-align: center;
+    }
+
+    .pattern h2 {
+        font-size: 2.2rem;
+    }
+
+    .brain-card {
+        padding: 32px 24px;
+    }
+
+    .brain {
+        font-size: 60px;
+    }
+
+    .brain-card h3 {
+        font-size: 1.7rem;
+    }
+}
+
+/* ==========================
+   Small Mobile
+========================== */
+
+@media (max-width: 480px) {
+
+    .pattern h2 {
+        font-size: 1.9rem;
+    }
+
+    .pattern p,
+    .brain-card p,
+    .pattern ul li {
+        font-size: 0.95rem;
+    }
+
+    .brain-card {
+        padding: 28px 20px;
+    }
+
+    .brain {
+        font-size: 52px;
+    }
+
+    .brain-card h3 {
+        font-size: 1.5rem;
+    }
 }
